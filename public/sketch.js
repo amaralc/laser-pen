@@ -5,9 +5,11 @@ function setup() {
 	background(51);
 	video = createCapture(VIDEO);
 	video.size(320,240);
-	video.hide();
+	video.hide();	
 }
 
 function draw() {	
 	image(video,0,0);
+	video.loadPixels();
+	console.log(video.pixels.length);
 }
