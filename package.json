@@ -1,0 +1,11 @@
+{
+  "name": "laser-pen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/amaralc/laser-pen",
+  "author": "amaralc <amaral.calil@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "p5-manager": "^0.4.3"
+  }
+}
