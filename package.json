@@ -5,7 +5,13 @@
   "repository": "https://github.com/amaralc/laser-pen",
   "author": "amaralc <amaral.calil@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "dev:debug": "nodemon --inspect server.js"
+  },
   "devDependencies": {
-    "p5-manager": "^0.4.3"
+    "nodemon": "^2.0.2",
+    "p5-manager": "^0.4.3",
+    "sucrase": "^3.12.1"
   }
 }
