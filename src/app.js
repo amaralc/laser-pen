@@ -2,12 +2,12 @@ import express from 'express';
 import routes from './routes';
 
 class App {
-  constructor(){
+  constructor() {
     this.server = express();
     this.routes();
   }
 
-  routes(){
+  routes() {
     this.server.use(routes);
   }
 }

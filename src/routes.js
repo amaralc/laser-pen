@@ -3,6 +3,6 @@ import path from 'path';
 
 const routes = new Router();
 
-routes.use('/',express.static(path.resolve(__dirname,'..','public')));
+routes.use('/', express.static(path.resolve(__dirname, '..', 'public')));
 
 export default routes;
