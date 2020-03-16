@@ -1,0 +1,18 @@
+{
+  "name": "laser-pen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/amaralc/laser-pen",
+  "author": "amaralc <amaral.calil@gmail.com>",
+  "license": "MIT",
+  "scripts":{
+    "dev":"nodemon src/server.js"
+  },  
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "sucrase": "^3.12.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
