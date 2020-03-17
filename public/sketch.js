@@ -1,5 +1,6 @@
 // Declara variavel para receber objeto video
 var video;
+var filteredScreen;
 
 function setup() {
   // Cria objeto video
@@ -15,33 +16,33 @@ function setup() {
 	createCanvas(320,240);
 }
 
-function rgbFilter(video, rThreshold, gThreshold, bThreshold){
-
-  // Carrega array de pixels
-  video.loadPixels();
+function rgbFilter(pixels, rThreshold, gThreshold, bThreshold){
 
   // Varre array de pixels [R, G, B, A, R, G, B, A, ...]
-  for (var i = 0; i < video.pixels.length; i += 4) {
+  for (var i = 0; i < pixels.length; i += 4) {
 
     // Edita R < rThreshold
-    if (video.pixels[i] < rThreshold){video.pixels[i] *= 0};
+    if (pixels[i] <= rThreshold){pixels[i] *= 0};
     // Edita G < gThreshold
-    if (video.pixels[i+1] < gThreshold){video.pixels[i+1] *= 0};
+    if (pixels[i+1] <= gThreshold){pixels[i+1] *= 0};
     // Edita B < bThreshold
-    if (video.pixels[i+2] < bThreshold){video.pixels[i+2] *= 0};
-
+    if (pixels[i+2] <= bThreshold){pixels[i+2] *= 0};
   }
 
-  // Atualiza pixels
-  video.updatePixels();
-
-  // Retorna video atualizado
-  return video;
+  // Retorna screenshot atualizado
+  return pixels;
 }
 
 function draw() {
 
-  video = rgbFilter(video, 250, 256, 256)
+  // Load
+  video.loadPixels();
+
+  // Filter
+  filteredScreen = rgbFilter(video.pixels, 200, 255, 255);
+
+  // Update
+  video.updatePixels();
 	image(video,0,0);
 
 }
