@@ -13,7 +13,11 @@ function setup() {
   video.hide();
 
   // Cria canvas
-	createCanvas(320,240);
+  createCanvas(320,240);
+  background(0,0,0);
+
+  // Carrega pixels do canvas
+  loadPixels();
 }
 
 function rgbFilter(pixels, rThreshold, gThreshold, bThreshold){
@@ -35,14 +39,30 @@ function rgbFilter(pixels, rThreshold, gThreshold, bThreshold){
 
 function draw() {
 
-  // Load
+  // Carrega pixels do video
   video.loadPixels();
 
-  // Filter
-  filteredScreen = rgbFilter(video.pixels, 200, 255, 255);
+  // Filtra
+  // Varre array de pixels [R, G, B, A, R, G, B, A, ...]
+  for (var i = 0; i < video.pixels.length; i += 4) {
+    // Se pixel vermelho tem valor menor que threshold
+    if(pixels[i]<=254){
+      // ... e pixel vermelho do video tem valor maior que threshold
+      if(video.pixels[i] > 254){
+        // ... substituti
+        pixels[i] = 255
+      }else{
+        pixels[i] = 0;
+      }
+    }
+    // Edita G < gThreshold
+    if (video.pixels[i+1] <= 255){pixels[i+1] = 0};
+    // Edita B < bThreshold
+    if (video.pixels[i+2] <= 255){pixels[i+2] = 0};
+  }
 
   // Update
-  video.updatePixels();
-	image(video,0,0);
+  updatePixels();
+	//image(video,0,0);
 
 }
