@@ -1,8 +1,13 @@
 // Declara variavel para receber objeto video
 var video;
-var filteredScreen;
+const rThreshold = 254;
+const gThreshold = 255;
+const bThreshold = 255;
 
 function setup() {
+
+  frameRate(30);
+
   // Cria objeto video
   video = createCapture(VIDEO);
 
@@ -41,14 +46,38 @@ function draw() {
 
   // Carrega pixels do video
   video.loadPixels();
+  stroke(255,0,0);
+  fill(255,0,0);
+
+  for (var y = 0; y < height; y++){
+    for (var x = 0; x < width; x++){
+      var index = (y * width + x ) * 4;
+
+      /** Se  */
+      if(pixels[index] <= rThreshold){
+
+        if(video.pixels[index + 1] > 250){ continue; };
+        if(video.pixels[index + 2] > 250){ continue; };
+        if(video.pixels[index] > rThreshold){
+          //pixels[index] = 255;
+          ellipse(x,y,5,5);
+        }else{
+          //pixels[index] = 0;
+        }
+      }
+    };
+  }
+
+  console.log(frameCount);
+  /*
 
   // Filtra
   // Varre array de pixels [R, G, B, A, R, G, B, A, ...]
   for (var i = 0; i < video.pixels.length; i += 4) {
     // Se pixel vermelho tem valor menor que threshold
-    if(pixels[i]<=254){
+    if(pixels[i]<=rThreshold){
       // ... e pixel vermelho do video tem valor maior que threshold
-      if(video.pixels[i] > 254){
+      if(video.pixels[i] > rThreshold){
         // ... substituti
         pixels[i] = 255
       }else{
@@ -56,13 +85,13 @@ function draw() {
       }
     }
     // Edita G < gThreshold
-    if (video.pixels[i+1] <= 255){pixels[i+1] = 0};
+    if (video.pixels[i+1] <= gThreshold){pixels[i+1] = 0};
     // Edita B < bThreshold
-    if (video.pixels[i+2] <= 255){pixels[i+2] = 0};
+    if (video.pixels[i+2] <= bThreshold){pixels[i+2] = 0};
   }
 
-  // Update
-  updatePixels();
-	//image(video,0,0);
+  */
 
+  // Update pixels do canva
+  //updatePixels();
 }
