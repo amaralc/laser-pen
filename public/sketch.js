@@ -10,6 +10,8 @@ var xBar = 0;
 var yBar = 0;
 var currentFrame;
 
+var socket;
+
 function setup() {
 
   // Define framerate
@@ -32,6 +34,10 @@ function setup() {
 
   // Carrega pixels do canvas
   loadPixels();
+
+  // Connect to socket
+
+  socket = io.connect('http://localhost:3333');
 }
 
 /** Calcula M00 */
