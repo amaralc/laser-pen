@@ -10,12 +10,24 @@ function setup() {
 }
 
 function draw() {
-	image(video,0,0);
-	filter(THRESHOLD, 0.3);
 
-	/**
-	 * Load pixels and log pixel length
-	 * video.loadPixels();
-	 * console.log(video.pixels.length);
-	 */
+  // Carrega array de pixels
+  video.loadPixels();
+
+  // Varre array de pixels [R, G, B, A, R, G, B, A, ...]
+  for (var i = 0; i < video.pixels.length; i += 4) {
+
+    // Edita R
+    if (video.pixels[i] < 200){
+      video.pixels[i] *= 0;
+    };
+    // Edita G
+    video.pixels[i + 1] *= 0;
+    // Edita B
+    video.pixels[i + 2] *= 0;
+  }
+
+  video.updatePixels();
+	image(video,0,0);
+
 }
