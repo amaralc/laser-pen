@@ -15,7 +15,7 @@ var socket;
 function setup() {
 
   // Define framerate
-  frameRate(60);
+  frameRate(30);
 
   // Cria objeto video
   video = createCapture(VIDEO);
@@ -29,7 +29,6 @@ function setup() {
   // Cria canvas
   createCanvas(320,240);
   background(0,0,0);
-
 
   // Carrega pixels do canvas
   loadPixels();
@@ -124,5 +123,17 @@ function draw() {
       };
     };
   };
+
+  socket.on('mouse', (data)=>{
+    stroke(255,0,255);
+    fill(255,0,255);
+    ellipse(data.x, data.y, 5, 5);
+  });
+
+  socket.on('laserPen',(data)=>{
+    stroke(255,0,255);
+    fill(255,0,255);
+    ellipse(data.x, data.y, 5, 5);
+  })
 }
 
