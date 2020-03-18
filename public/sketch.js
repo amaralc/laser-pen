@@ -15,7 +15,7 @@ var socket;
 function setup() {
 
   // Define framerate
-  frameRate(30);
+  frameRate(60);
 
   // Cria objeto video
   video = createCapture(VIDEO);
@@ -58,6 +58,23 @@ function moment(array,i,j,w,h){
   return Mij;
 }
 
+/** Log mouse coordinates when mouse is dragged */
+function mouseDragged(){
+  console.log(`Sending: ${mouseX} , ${mouseY}`);
+
+  var data = {
+    "name": "mouse",
+    x: mouseX,
+    y: mouseY
+  }
+
+  socket.emit('mouse', data);
+
+  stroke(0,255,0);
+  fill(0,255,0);
+  ellipse(mouseX, mouseY, 5, 5);
+}
+
 function draw() {
 
   currentFrame = frameCount;
@@ -95,13 +112,17 @@ function draw() {
           stroke(255,0,0);
           fill(255,0,0);
           ellipse(xBar, yBar, 5, 5)
+
+          var data = {
+            "name": "laserPen",
+            x: xBar,
+            y: yBar
+          }
+
+          socket.emit('laserPen', data);
         };
       };
     };
   };
-
-  stroke(0,255,0);
-  fill(255,255,0);
-  ellipse(mouseX, mouseY, 5, 5);
 }
 
