@@ -10,6 +10,8 @@ var xBar = 0;
 var yBar = 0;
 var currentFrame;
 
+var socket;
+
 function setup() {
 
   // Define framerate
@@ -27,11 +29,14 @@ function setup() {
   // Cria canvas
   createCanvas(320,240);
   background(0,0,0);
-  stroke(255,0,0);
-  fill(255,0,0);
+
 
   // Carrega pixels do canvas
   loadPixels();
+
+  // Connect to socket
+
+  socket = io.connect('http://localhost:3333');
 }
 
 /** Calcula M00 */
@@ -87,10 +92,16 @@ function draw() {
           xBar = M10/M00;
           yBar = M01/M00;
 
+          stroke(255,0,0);
+          fill(255,0,0);
           ellipse(xBar, yBar, 5, 5)
         };
       };
     };
   };
+
+  stroke(0,255,0);
+  fill(255,255,0);
+  ellipse(mouseX, mouseY, 5, 5);
 }
 
