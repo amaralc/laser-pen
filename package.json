@@ -6,7 +6,7 @@
   "author": "amaralc <amaral.calil@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon src/socket.js",
     "dev:debug": "nodemon --inspect src/server.js"
   },
   "devDependencies": {

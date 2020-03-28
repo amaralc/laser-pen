@@ -34,7 +34,6 @@ function setup() {
   loadPixels();
 
   // Connect to socket
-
   socket = io.connect('http://localhost:3333');
 }
 
