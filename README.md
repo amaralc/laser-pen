@@ -32,6 +32,10 @@ Seu navegador pedirá acesso à sua webcam e o projeto será inicializado.
 * Escolha um objeto vermelho, bem iluminado, ou um laser pointer;
 * Vire a webcam para a parede e faça um desenho na mesma região da parede utilizando o pointer ou o objeto vermelho bem iluminado;
 
+## Resultado esperado
+
+<img src="doc/img/caneca.JPG" height="200">
+
 O projeto ainda está em desenvolvimento e podem haver bugs no processo. Fique à vontade para sugerir modificações.
 
 
